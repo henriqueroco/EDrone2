@@ -31,6 +31,15 @@ public class Cliente implements Serializable
    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
    private Set<Venda> vendas = new HashSet<Venda>();
 
+   @Column(nullable = false)
+   private String nome;
+
+   @Column(nullable = false)
+   private String email;
+
+   @Column(nullable = false)
+   private String senha;
+
    public Long getId()
    {
       return this.id;
@@ -49,15 +58,6 @@ public class Cliente implements Serializable
    public void setVersion(final int version)
    {
       this.version = version;
-   }
-
-   @Override
-   public String toString()
-   {
-      String result = getClass().getSimpleName() + " ";
-      if (id != null)
-         result += "id: " + id;
-      return result;
    }
 
    @Override
@@ -99,5 +99,48 @@ public class Cliente implements Serializable
    public void setVendas(final Set<Venda> vendas)
    {
       this.vendas = vendas;
+   }
+
+   public String getNome()
+   {
+      return nome;
+   }
+
+   public void setNome(String nome)
+   {
+      this.nome = nome;
+   }
+
+   public String getEmail()
+   {
+      return email;
+   }
+
+   public void setEmail(String email)
+   {
+      this.email = email;
+   }
+
+   public String getSenha()
+   {
+      return senha;
+   }
+
+   public void setSenha(String senha)
+   {
+      this.senha = senha;
+   }
+
+   @Override
+   public String toString()
+   {
+      String result = getClass().getSimpleName() + " ";
+      if (nome != null && !nome.trim().isEmpty())
+         result += "nome: " + nome;
+      if (email != null && !email.trim().isEmpty())
+         result += ", email: " + email;
+      if (senha != null && !senha.trim().isEmpty())
+         result += ", senha: " + senha;
+      return result;
    }
 }
