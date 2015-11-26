@@ -17,100 +17,86 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @XmlRootElement
-public class Categoria implements Serializable
-{
+public class Categoria implements Serializable {
 
-   @Id
-   @GeneratedValue(strategy = GenerationType.SEQUENCE)
-   @Column(name = "id", updatable = false, nullable = false)
-   private Long id;
-   @Version
-   @Column(name = "version")
-   private int version;
+	private static final long serialVersionUID = 1L;
 
-   @Column(nullable = false)
-   private String descricao;
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@Column(name = "id", updatable = false, nullable = false)
+	private Long id;
+	@Version
+	@Column(name = "version")
+	private int version;
 
-   @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL, orphanRemoval = true)
-   private Set<Produto> produtos = new HashSet<Produto>();
+	@Column(nullable = false)
+	private String descricao;
 
-   public Long getId()
-   {
-      return this.id;
-   }
+	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<Produto> produtos = new HashSet<Produto>();
 
-   public void setId(final Long id)
-   {
-      this.id = id;
-   }
+	public Long getId() {
+		return this.id;
+	}
 
-   public int getVersion()
-   {
-      return this.version;
-   }
+	public void setId(final Long id) {
+		this.id = id;
+	}
 
-   public void setVersion(final int version)
-   {
-      this.version = version;
-   }
+	public int getVersion() {
+		return this.version;
+	}
 
-   @Override
-   public boolean equals(Object obj)
-   {
-      if (this == obj)
-      {
-         return true;
-      }
-      if (!(obj instanceof Categoria))
-      {
-         return false;
-      }
-      Categoria other = (Categoria) obj;
-      if (id != null)
-      {
-         if (!id.equals(other.id))
-         {
-            return false;
-         }
-      }
-      return true;
-   }
+	public void setVersion(final int version) {
+		this.version = version;
+	}
 
-   @Override
-   public int hashCode()
-   {
-      final int prime = 31;
-      int result = 1;
-      result = prime * result + ((id == null) ? 0 : id.hashCode());
-      return result;
-   }
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!(obj instanceof Categoria)) {
+			return false;
+		}
+		Categoria other = (Categoria) obj;
+		if (id != null) {
+			if (!id.equals(other.id)) {
+				return false;
+			}
+		}
+		return true;
+	}
 
-   public String getDescricao()
-   {
-      return descricao;
-   }
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
 
-   public void setDescricao(String descricao)
-   {
-      this.descricao = descricao;
-   }
+	public String getDescricao() {
+		return descricao;
+	}
 
-   @Override
-   public String toString()
-   {
-      String result = getClass().getSimpleName() + " ";
-      if (descricao != null && !descricao.trim().isEmpty())
-         result += "descricao: " + descricao;
-      return result;
-   }
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
 
-   public Set<Produto> getProdutos()
-   {
-      return this.produtos;
-   }
+	@Override
+	public String toString() {
+		String result = getClass().getSimpleName() + " ";
+		if (descricao != null && !descricao.trim().isEmpty())
+			result += "descricao: " + descricao;
+		return result;
+	}
 
-   public void setProdutos(final Set<Produto> produtos)
-   {
-      this.produtos = produtos;
-   }
+	public Set<Produto> getProdutos() {
+		return this.produtos;
+	}
+
+	public void setProdutos(final Set<Produto> produtos) {
+		this.produtos = produtos;
+	}
 }

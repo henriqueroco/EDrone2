@@ -14,100 +14,91 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @XmlRootElement
-public class Produto implements Serializable
-{
+public class Produto implements Serializable {
 
-   @Id
-   @GeneratedValue(strategy = GenerationType.SEQUENCE)
-   @Column(name = "id", updatable = false, nullable = false)
-   private Long id;
-   @Version
-   @Column(name = "version")
-   private int version;
+	private static final long serialVersionUID = 1L;
 
-   @ManyToOne
-   private Categoria categoria;
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@Column(name = "id", updatable = false, nullable = false)
+	private Long id;
+	@Version
+	@Column(name = "version")
+	private int version;
 
-   @Column(nullable = false)
-   private String nome;
+	@ManyToOne
+	private Categoria categoria;
 
-   public Long getId()
-   {
-      return this.id;
-   }
+	@Column(nullable = false)
+	private String nome;
 
-   public void setId(final Long id)
-   {
-      this.id = id;
-   }
+	public Long getId() {
+		return this.id;
+	}
 
-   public int getVersion()
-   {
-      return this.version;
-   }
+	public void setId(final Long id) {
+		this.id = id;
+	}
 
-   public void setVersion(final int version)
-   {
-      this.version = version;
-   }
+	public int getVersion() {
+		return this.version;
+	}
 
-   @Override
-   public boolean equals(Object obj)
-   {
-      if (this == obj)
-      {
-         return true;
-      }
-      if (!(obj instanceof Produto))
-      {
-         return false;
-      }
-      Produto other = (Produto) obj;
-      if (id != null)
-      {
-         if (!id.equals(other.id))
-         {
-            return false;
-         }
-      }
-      return true;
-   }
+	public void setVersion(final int version) {
+		this.version = version;
+	}
 
-   @Override
-   public int hashCode()
-   {
-      final int prime = 31;
-      int result = 1;
-      result = prime * result + ((id == null) ? 0 : id.hashCode());
-      return result;
-   }
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!(obj instanceof Produto)) {
+			return false;
+		}
+		Produto other = (Produto) obj;
+		if (id != null) {
+			if (!id.equals(other.id)) {
+				return false;
+			}
+		}
+		return true;
+	}
 
-   public Categoria getCategoria()
-   {
-      return this.categoria;
-   }
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
 
-   public void setCategoria(final Categoria categoria)
-   {
-      this.categoria = categoria;
-   }
+	public Categoria getCategoria() {
+		return this.categoria;
+	}
 
-   public String getNome()
-   {
-      return nome;
-   }
+	public void setCategoria(final Categoria categoria) {
+		this.categoria = categoria;
+	}
 
-   public void setNome(String nome)
-   {
-      this.nome = nome;
-   }
+	public String getNome() {
+		return nome;
+	}
 
-   @Override
-   public String toString()
-   {
-      String result = getClass().getSimpleName() + " ";
-      if (nome != null && !nome.trim().isEmpty())
-         result += "nome: " + nome;
-      return result;
-   }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	@Override
+	public String toString() {
+		String result = getClass().getSimpleName() + " ";
+		if (nome != null && !nome.trim().isEmpty())
+			result += "nome: " + nome;
+		return result;
+	}
+
+	public short getPreco() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
